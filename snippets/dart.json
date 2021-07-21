@@ -1,0 +1,84 @@
+{
+    "merchant_model": {
+        "prefix": "merchant_model",
+        "body": [
+            "@JsonSerializable()",
+            "class ${1:modelName} {",
+            "  ${1:modelName}();",
+            "  factory ${1:modelName}.fromJson(Map<String, dynamic> json) =>",
+            "      _$${1:modelName}FromJson(json);",
+            "  Map<String, dynamic> toJson() => _$${1:modelName}ToJson(this);",
+            "}"
+        ],
+        "description": "商户 model 模板"
+    },
+    "merchant_bloc": {
+        "prefix": "merchant_bloc",
+        "body": [
+            "class ${1:widgetName} extends StatelessWidget {",
+            "    const ${1:widgetName}({Key key}) : super(key: key);",
+            "    @override",
+            "    Widget build(BuildContext context) => BlocBuilder<MainEvent, MainState>(",
+            "        bloc: BlocProvider.of<MainBloc>(context),",
+            "        builder: (context, state) => (${2:blocCondition} ?? false != null)",
+            "            ? null",
+            "            : const SizedBox.shrink());",
+            "}"
+        ],
+        "description": "商户 bloc 模板"
+    },
+    "merchant_text": {
+        "prefix": "merchant_text",
+        "body": [
+            "Text('${1:text}',",
+            "  style: TextStyle(fontSize: 13, color: Color(0xFF879099))),"
+        ],
+        "description": "商户 text 模板"
+    },
+    "merchant_rich_text": {
+        "prefix": "merchant_rich_text",
+        "body": [
+            "RichText(",
+            "   text: TextSpan(",
+            "   text: '${1:text}',",
+            "   style: const TextStyle(fontSize: 14, color: Color(0xFF242729)),",
+            "       children: const <TextSpan>[",
+            "           TextSpan(",
+            "               text: '${2:text}',",
+            "               style: TextStyle(color: Color(0xFF242729), fontSize: 12))",
+            "       ],",
+            "   ),",
+            "),"
+        ],
+        "description": "商户 text 模板"
+    },
+    "merchant_container_decoration": {
+        "prefix": "merchant_container_decoration",
+        "body": [
+            "BoxDecoration(",
+            "   color: const Color(0xFF0B82F1).withAlpha(15),",
+            "   borderRadius: const BorderRadius.all(Radius.circular(2))),"
+        ],
+        "description": "商户 container_decoration 模板"
+    },
+    "merchant_ok_cancel": {
+        "prefix": "merchant_ok_cancel",
+        "body": [
+            "showDialog(",
+            "                      context: context,",
+            "                      barrierDismissible: false,",
+            "                      builder: (context) => OkCancelDialog(",
+            "                            () {",
+            "                              _bloc.dispatch(DeleteEvent());",
+            "                              Navigator.pop(context);",
+            "                            },",
+            "                            title:",
+            "                                '${1:title}',",
+            "                            onCancel: () {",
+            "                              Navigator.pop(context);",
+            "                            },",
+            "                          ));"
+        ],
+        "description": "商户 ok_cancel 模板"
+    }
+}

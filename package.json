@@ -1,0 +1,77 @@
+{
+  "name": "merchant-vs-plugin",
+  "displayName": "Hello Merchant Plugin",
+  "description": "商户 VS Code 插件,包含 Wrap in Container Stack，常用组件 snippet",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.58.0"
+  },
+  "publisher": "shaolin、Dolin、少林",
+  "categories": [
+    "Other"
+  ],
+  "icon": "imgs/icon.png",
+  "activationEvents": [
+    "onCommand:hello merchant-vs-plugin",
+    "onCommand:merchant.wrapInContainer",
+    "onCommand:merchant.wrapInStack"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hello merchant-vs-plugin",
+        "title": "hello merchant-vs-plugin"
+      },
+      {
+        "command": "merchant.wrapInContainer",
+        "title": "Wrap in Container"
+      },
+      {
+        "command": "merchant.wrapInStack",
+        "title": "Wrap in Stack"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "merchant.wrapInContainer",
+        "key": "alt+c",
+        "mac": "alt+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "merchant.wrapInStack",
+        "key": "alt+s",
+        "mac": "alt+s",
+        "when": "editorTextFocus"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "dart",
+        "path": "./snippets/dart.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.58.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
